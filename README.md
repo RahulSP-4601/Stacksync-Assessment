@@ -1,4 +1,4 @@
-# Safe Python Script Execution API
+# STACKSYNC-ASSESSMENT: Safe Python Script Execution API
 
 This project is a secure Flask-based API service that enables safe execution of arbitrary user-defined Python scripts inside a Docker container using `nsjail`. Only the result of the `main()` function is returned — all `print()` statements are separated into `stdout`.
 
