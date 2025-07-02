@@ -1,19 +1,19 @@
-# 🛡️ Safe Python Script Execution API
+# Safe Python Script Execution API
 
 This project is a secure Flask-based API service that enables safe execution of arbitrary user-defined Python scripts inside a Docker container using `nsjail`. Only the result of the `main()` function is returned — all `print()` statements are separated into `stdout`.
 
-## 🚀 Features
+## Features
 
-- 🔐 **Secure sandboxing** with `nsjail`
-- ⚙️ **Dockerized** for consistent and lightweight deployment
-- 🧪 Supports libraries like `os`, `pandas`, and `numpy`
-- 📦 Minimal API with a single `/execute` endpoint
-- 🧹 Filters out all stdout except `main()` return
-- 🧾 Graceful error handling for invalid scripts or results
+- **Secure sandboxing** with `nsjail`
+- **Dockerized** for consistent and lightweight deployment
+- Supports libraries like `os`, `pandas`, and `numpy`
+- Minimal API with a single `/execute` endpoint
+- Filters out all stdout except `main()` return
+- Graceful error handling for invalid scripts or results
 
 ---
 
-## 📥 Sample Request
+## Sample Request
 
 ### `POST /execute`
 
@@ -36,7 +36,7 @@ This project is a secure Flask-based API service that enables safe execution of 
 }
 ```
 
-#### 🐳 Run Locally with Docker
+#### Run Locally with Docker
 
 **Clonse the Repository**
 
