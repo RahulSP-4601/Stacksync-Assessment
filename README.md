@@ -36,7 +36,7 @@ This project is a secure Flask-based API service that enables safe execution of 
 }
 ```
 
-#### Run Locally with Docker
+### Run Locally with Docker
 
 **Clonse the Repository**
 
@@ -57,7 +57,7 @@ docker build -t safe-python-api .
 docker run -p 8080:8080 safe-python-api
 ```
 
-##### Try on Local
+#### Try on Local
 
 ```bash
 curl -X POST http://127.0.0.1:8080/execute \
@@ -65,7 +65,7 @@ curl -X POST http://127.0.0.1:8080/execute \
   -d '{"script": "def main():\n    return {\"message\": \"Hello from main\"}\n\nimport json\nprint(json.dumps(main()))"}'
 ```
 
-##### Try on Google Cloud Run
+#### Try on Google Cloud Run
 
 ```bash
 curl -X POST https://stacksync-api-76854938786.us-central1.run.app/execute \
@@ -73,7 +73,7 @@ curl -X POST https://stacksync-api-76854938786.us-central1.run.app/execute \
   -d '{"script": "def main():\n    return {\"message\": \"Hello from Cloud Run\"}\n\nimport json\nprint(json.dumps(main()))"}'
 ```
 
-###### Tech Stack
+##### Tech Stack
 
 - Python 3.10
 - Flask
