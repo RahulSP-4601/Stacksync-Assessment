@@ -6,6 +6,7 @@ import os
 import json
 
 app = Flask(__name__)
+USE_NSJAIL = os.getenv("USE_NSJAIL", "true").lower() == "true"
 
 @app.route("/execute", methods=["POST"])
 def execute_script():
@@ -15,15 +16,18 @@ def execute_script():
 
     script_code = data["script"]
 
-    # Write the script to a temp file
     with tempfile.NamedTemporaryFile(delete=False, suffix=".py") as tmp:
         tmp.write(script_code.encode("utf-8"))
         tmp_path = tmp.name
 
     try:
-        # Run the script using nsjail
+        if USE_NSJAIL:
+            command = ["bash", "scripts/run_in_nsjail.sh", tmp_path]
+        else:
+            command = ["python3", tmp_path]
+
         result = subprocess.run(
-            ["bash", "scripts/run_in_nsjail.sh", tmp_path],
+            command,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
             timeout=5,
@@ -41,14 +45,13 @@ def execute_script():
             "result": json_result,
             "stdout": stdout
         })
-        
-    except Exception as e:
+
+    except Exception:
         return jsonify({
             "error": "Invalid output. Ensure main() returns JSON.",
             "raw_stdout": result.stdout.decode(),
             "raw_stderr": result.stderr.decode()
         }), 400
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)

@@ -41,8 +41,8 @@ This project is a secure Flask-based API service that enables safe execution of 
 **Clonse the Repository**
 
 ```json
-git clone https://github.com/YOUR_USERNAME/safe-python-api.git
-cd safe-python-api
+git clone https://github.com/RahulSP-4601/Stacksync-Assessment.git
+cd Stacksync-Assessment
 ```
 
 **Build the Docker image**
@@ -57,12 +57,20 @@ docker build -t safe-python-api .
 docker run -p 8080:8080 safe-python-api
 ```
 
-##### 🌐 Try on Google Cloud Run
+##### Try on Local
 
 ```json
-curl -X POST https://YOUR_CLOUD_RUN_URL/execute \
+curl -X POST http://127.0.0.1:8080/execute \
   -H "Content-Type: application/json" \
-  -d '{"script": "def main():\n    return {\"message\": \"Hello from GCP\"}\n\nimport json\nprint(json.dumps(main()))"}'
+  -d '{"script": "def main():\n    return {\"message\": \"Hello from main\"}\n\nimport json\nprint(json.dumps(main()))"}'
+```
+
+##### Try on Google Cloud Run
+
+```json
+curl -X POST https://stacksync-api-76854938786.us-central1.run.app/execute \
+  -H "Content-Type: application/json" \
+  -d '{"script": "def main():\n    return {\"message\": \"Hello from Cloud Run\"}\n\nimport json\nprint(json.dumps(main()))"}'
 ```
 
 ###### Tech Stack
