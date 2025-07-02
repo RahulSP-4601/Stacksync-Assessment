@@ -19,7 +19,7 @@ This project is a secure Flask-based API service that enables safe execution of 
 
 **Request Body (JSON):**
 
-```json
+```bash
 {
   "script": "def main():\n    return {\"message\": \"Hello from main\"}\n\nimport json\nprint(json.dumps(main()))"
 }
@@ -27,7 +27,7 @@ This project is a secure Flask-based API service that enables safe execution of 
 
 **Successful Response:**
 
-```json
+```bash
 {
   "result": {
     "message": "Hello from main"
@@ -40,26 +40,26 @@ This project is a secure Flask-based API service that enables safe execution of 
 
 **Clonse the Repository**
 
-```json
+```bash
 git clone https://github.com/RahulSP-4601/Stacksync-Assessment.git
 cd Stacksync-Assessment
 ```
 
 **Build the Docker image**
 
-```json
+```bash
 docker build -t safe-python-api .
 ```
 
 **Run the container**
 
-```json
+```bash
 docker run -p 8080:8080 safe-python-api
 ```
 
 ##### Try on Local
 
-```json
+```bash
 curl -X POST http://127.0.0.1:8080/execute \
   -H "Content-Type: application/json" \
   -d '{"script": "def main():\n    return {\"message\": \"Hello from main\"}\n\nimport json\nprint(json.dumps(main()))"}'
@@ -67,7 +67,7 @@ curl -X POST http://127.0.0.1:8080/execute \
 
 ##### Try on Google Cloud Run
 
-```json
+```bash
 curl -X POST https://stacksync-api-76854938786.us-central1.run.app/execute \
   -H "Content-Type: application/json" \
   -d '{"script": "def main():\n    return {\"message\": \"Hello from Cloud Run\"}\n\nimport json\nprint(json.dumps(main()))"}'
